@@ -37,7 +37,8 @@ $posts = [
     ]
 ];
 
-Route::resource('posts', PostsController::class)->only(['index', 'show']);
+Route::resource('posts', PostsController::class)
+    ->only(['index', 'show', 'create', 'store']);
 
 // Route::get('/posts', function() use($posts) {
 //     // dd(request()->all());
