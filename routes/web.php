@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,8 @@ $posts = [
 ];
 
 Route::get('/posts', function() use($posts) {
+    // dd(request()->all());
+    dd((int)request()->query('page', 1));
    return view('posts.index', ['posts' => $posts]); 
 });
 
