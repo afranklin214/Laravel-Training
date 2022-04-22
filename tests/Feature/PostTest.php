@@ -34,4 +34,18 @@ class PostTest extends TestCase
 
         $response->assertSeeText('New title');
     }
+
+    public function testStoreVlidPost()
+    {
+        $params = [
+            'title' => 'Valid title',
+            'content' => 'At least 10 characters'
+        ];
+
+        $this->post('/posts', $params)
+            ->assertStatus(302)
+            ->assertSessionHas('status');
+
+        $this->assertEquals(session('status'), 'The log post was created!');
+    }
 }
