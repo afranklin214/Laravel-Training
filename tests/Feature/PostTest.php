@@ -35,7 +35,7 @@ class PostTest extends TestCase
         $response->assertSeeText('New title');
     }
 
-    public function testStoreVlidPost()
+    public function testStoreValidPost()
     {
         $params = [
             'title' => 'Valid title',
@@ -47,5 +47,22 @@ class PostTest extends TestCase
             ->assertSessionHas('status');
 
         $this->assertEquals(session('status'), 'The log post was created!');
+    }
+
+    public function testStorePostFail()
+    {
+        $params = [
+            'title' => 'x',
+            'content' => 'x'
+        ];
+
+        $this->post('/posts', $params)
+            ->assertStatus(302)
+            ->assertSessionHas('errors');
+
+        $messages = session('errors')->getMessages();
+
+        $this->assertEquals($messages['title'][0], 'The title must be at least 5 characters.');
+        $this->assertEquals($messages['content'][0], 'The content must be at least 10 characters.');
     }
 }
