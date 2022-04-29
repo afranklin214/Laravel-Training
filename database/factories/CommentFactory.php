@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Comment;
+use Faker\Generator as Faker;
 
 class CommentFactory extends Factory
 {
@@ -11,7 +13,7 @@ class CommentFactory extends Factory
      *
      * @var string
      */
-    protected $model = Comments::class;
+    protected $model = Comment::class;
 
 
     /**
@@ -23,6 +25,7 @@ class CommentFactory extends Factory
     {
         return [
             'content' => $this->faker->text,
+            'created_at'=> $this->faker->dateTimeBetween('-3 months'),
         ];
     }
 }
