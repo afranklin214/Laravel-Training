@@ -126,6 +126,8 @@ class PostTest extends TestCase
         $post->content = 'Content of the blog post';
         $post->save();
 
+        // return BlogPost::factory()->states($state)->create();
+
         return $post;
     }
 }
