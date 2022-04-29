@@ -19,11 +19,13 @@ class BlogPostFactory extends Factory
         ];
     }
 
-    public function state($state)
+    public function new_title()
     {
-        return [
-            'title' => 'New title',
-            'content' =>'Content of the blog post'
-        ];
+        return $this->state(function (array $attributes) {
+            return [
+                'title' => 'New title',
+                'content' =>'Content of the blog post',
+            ];
+        });      
     }
 }
