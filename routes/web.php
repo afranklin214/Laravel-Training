@@ -21,6 +21,8 @@ Route::get('/', [HomeController::class, 'home'])->name('home.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 Route::get('/single', AboutController::class);
 
+Auth::routes();
+
 $posts = [
     1 => [
         'title' => 'Intro to Laravel',
