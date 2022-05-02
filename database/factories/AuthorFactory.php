@@ -17,4 +17,11 @@ class AuthorFactory extends Factory
             //
         ];
     }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (Author $author) {
+            $author->profile()->save(Profile::factory()->make()->save());
+        });
+    }
 }
