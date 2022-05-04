@@ -25,44 +25,6 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Show the application registration form.
-     * 
-     * @return \Illuminate\Http\Response
-     */
-    public function showRegistrationForm()
-    {
-        return view('auth.register');
-    }
-
-    /**
-     * Handle a registration request for the application.
-     * 
-     * @param \Illuminate\Http\Request $request
-     * @retun \Illuminate\Http\Response
-     */
-    public function register(Rquest $request)
-    {
-        $this->validator($request->all())->validate();
-
-        event(new Registered($user = $this->create($request->all())));
-
-        $this-guard()->login($user);
-
-        return $this->registered($request, $user)
-                    ?: redirect($this->redirectPath());
-    }
-
-    /**
-     * Get the guard to be used during registration.
-     * 
-     * @return \Illuminate\Contracts\Auth\StatefulGuard
-     */
-    protected function guard()
-    {
-        return Auth::guard();
-    }
-
-    /**
      * Where to redirect users after registration.
      *
      * @var string
