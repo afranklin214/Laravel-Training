@@ -1,20 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <div class="form-group">
-            <label>Name</label>
-            <input name="name" value="{{ old('name') }}" required
-             class="form-control" {{ $errors->has('name') ? ' is-invalid': '' }}>
-
-             @if ($errors->has('name'))
-                 <span class="invalid-feedback">
-                     <strong>{{ $errors->first('name') }}</strong>
-                 </span>
-             @endif
-        </div>
-        
         <div class="form-group">
             <label>E-mail</label>
             <input name="email" value="{{ old('email') }}" required
@@ -38,13 +26,15 @@
                  </span>
              @endif
         </div>
-        
-        <div class="form-group">
-            <label>Retype Password</label>
-            <input name="password_confirmation" required type="password" class="form-control">
-        </div>
 
-        <button type="submit" class="btn btn-primary btn-block">Register!</button>
+        <div class="form=group">
+            <div class="form-check">
+                <import class="form-check-input" type="checkbox" name="remember" value="{{ old('remember') ? 'checked': '' }}"></import>
+                <label class="form-check-label" for="remember">Remember Me</label>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-block">Login!</button>
             
     </form>
 @endsection('content')
