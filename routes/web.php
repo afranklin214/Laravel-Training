@@ -17,10 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'home'])->name('home.index');
+Route::get('/', [HomeController::class, 'home'])
+    ->name('home.index')
+    // ->middleware('auth')
+    ;
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 Route::get('/single', AboutController::class);
 
+Auth::routes();
 
 
 $posts = [
@@ -94,6 +98,5 @@ Route::prefix('/fun')->name('fun.')->group(function() use($posts) {
     })->name('download');
 });
 
-Auth::routes();
 
 
