@@ -13,7 +13,9 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(20)->create();
+        $usersCount = max((int)$this->command->ask('How many users would you like?', 20), 1);
+        
+        \App\Models\User::factory($usersCount)->create();
         \App\Models\User::factory()->john_doe()->create();
 
         
