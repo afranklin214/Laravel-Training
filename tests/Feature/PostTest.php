@@ -5,8 +5,8 @@ namespace Tests\Feature;
 use App\Models\BlogPost;
 use App\Models\Comment;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\User;
 
 class PostTest extends TestCase
 {
@@ -61,9 +61,9 @@ class PostTest extends TestCase
             'content' => 'At least 10 characters'
         ];
 
-        
+        $user = User::factory()->create();
 
-        $this->actingAs($this->user())
+        $this->actingAs(this->user())
             ->post('/posts', $params)
             ->assertStatus(302)
             ->assertSessionHas('status');
