@@ -25,6 +25,7 @@ class BlogPostFactory extends Factory
             return [
                 'title' => 'New title',
                 'content' =>'Content of the blog post',
+                'created_at'=> $this->faker->dateTimeBetween('-3 months'),
             ];
         });      
     }
