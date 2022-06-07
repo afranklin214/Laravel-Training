@@ -93,7 +93,7 @@ class PostsController extends Controller
         //     abort(403, "You do not have permission to edit this Blog Post");
         // }
 
-        $this->authorize('posts.update', $post);
+        $this->authorize($post);
 
         return view('posts.edit', ['post' => BlogPost::findOrFail($id)]);
 
@@ -109,7 +109,7 @@ class PostsController extends Controller
     public function update(StorePost $request, $id)
     {
         $post = BlogPost::findOrFail($id);
-        $this->authorize('posts.update', $post);
+        $this->authorize($post);
 
         $validated = $request->validated();
         $post->fill($validated);
@@ -130,7 +130,7 @@ class PostsController extends Controller
     {
         $post = BlogPost::findOrFail($id);
 
-        $this->authorize('posts.delete', $post);
+        $this->authorize($post);
 
         $post->delete();
 
