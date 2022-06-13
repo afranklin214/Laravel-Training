@@ -4,13 +4,15 @@
 
 @section('content')
     <h1> {{ $post->title }}</h1>
+    @if ((new Carbon\Carbon())->diffInMinutes($post->created_at) < 20)
+        <span>
+            Brand New Post!
+        </span>
+    @endif
     <p>{{ $post->content }}</p>
     <p>Added {{ $post->created_at->diffForHumans() }}</p>
 
-    @if (now()->diffInMinutes($post->created_at) < 5)
-        <div class="alert alert-info">New!</div>
-    @endif
-
+    
     <h4>Comments</h4>
 
     @forelse($post->comments as $comment)
