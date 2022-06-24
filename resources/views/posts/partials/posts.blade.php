@@ -14,6 +14,8 @@
     by {{ $post->user->name }}
 </p>
 
+{{-- <x-updated :date="$post->created_at" :userId="$post->user->id" :name="$post->user->name" /> --}}
+
 @if($post->comments_count)
     <p>{{ $post->comments_count }} comments</p>
 @else

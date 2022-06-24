@@ -12,6 +12,7 @@
     <p>{{ $post->content }}</p>
     <p>Added {{ $post->created_at->diffForHumans() }}</p>
 
+    {{-- <x-updated :date="$post->created_at" :userId="$post->user->id" :name="$post->user->name" /> --}}
     
     <h4>Comments</h4>
 
