@@ -14,6 +14,7 @@
 
     {{-- <x-updated :date="$post->created_at" :userId="$post->user->id" :name="$post->user->name" /> --}}
     
+    <p>Currently read by {{ $counter }} people</p>
     <h4>Comments</h4>
 
     @forelse($post->comments as $comment)
