@@ -14,6 +14,8 @@
 
     {{-- <x-updated :date="$post->created_at" :userId="$post->user->id" :name="$post->user->name" /> --}}
     
+    @tags(['tags' => $post->tags])@endtags
+    
     <p>Currently read by {{ $counter }} people</p>
     <h4>Comments</h4>
 
