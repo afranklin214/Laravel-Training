@@ -16,6 +16,7 @@
              @empty
                  No posts found!
             @endforelse
+           
         </div>
         <div class="col-4">
             @include('posts._activity')
