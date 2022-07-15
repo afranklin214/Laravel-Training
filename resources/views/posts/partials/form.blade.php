@@ -10,5 +10,5 @@
         <textarea class="form-control" id="content" name="content">{{ old('content', optional($post ?? null)->content) }}</textarea>
     </div>
    
-    <x-errors :errors="$errors->first('title')" />
+    <x-errors :errors="$errors->first('content')" />
     
