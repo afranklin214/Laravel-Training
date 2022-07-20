@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 
 // use Illuminate\Support\Facades\DB;
 
@@ -71,7 +72,11 @@ class PostsController extends Controller
             dump($file->getClientOriginalExtension());
             // dump($file->store('thumbnails'));
 
-            dump($file->storeAs('thumbnails', $post->id . '.' . $file->guessExtension()));
+            $name1 = $file->storeAs('thumbnails', $post->id . '.' . $file->guessExtension());
+            // $name2 = Storage::disk('local')->putFileAs('thumbnails', $file, $post->id . '.' . $file->guessExtension());
+
+            dump(Storage::url($name1));
+            // dump(Storage::disk('local')->url($name2));
         }
         die;
 
