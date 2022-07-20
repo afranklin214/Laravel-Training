@@ -69,7 +69,9 @@ class PostsController extends Controller
             dump($file);
             dump($file->getClientMimeType());
             dump($file->getClientOriginalExtension());
-            dump($file->store('thumbnails'));
+            // dump($file->store('thumbnails'));
+
+            dump($file->storeAs('thumbnails', $post->id . '.' . $file->guessExtension()));
         }
         die;
 
