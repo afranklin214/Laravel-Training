@@ -4,12 +4,8 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Updated extends Component
+class Badge extends Component
 {
-
-    public $date;
-    public $name;
-    public $userId;
     /**
      * Create a new component instance.
      *
@@ -27,6 +23,6 @@ class Updated extends Component
      */
     public function render()
     {
-        return view('components.updated');
+        return view('components.badge');
     }
 }

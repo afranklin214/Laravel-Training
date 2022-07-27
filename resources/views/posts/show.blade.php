@@ -17,12 +17,11 @@
 
             @endif
 
-            <h1> {{ $post->title }}</h1>
-            @if ((new Carbon\Carbon())->diffInMinutes($post->created_at) < 20)
-                <span>
-                    Brand New Post!
-                </span>
-            @endif
+            <h1> {{ $post->title }}
+                <x-badge :show="now()->diffInMinutes($post->created_at) < 20">
+                    New Blog Post!
+                </x-badge>
+            </h1>
 
             @if($post->image)
                     </h1>
@@ -33,9 +32,10 @@
             <p>{{ $post->content }}</p>
             
             {{-- <img src="{{ $post->image->url() }}" /> --}}
-            <p>Added {{ $post->created_at->diffForHumans() }}</p>
-    
-            {{-- <x-updated :date="$post->created_at" :userId="$post->user->id" :name="$post->user->name" /> --}}
+            {{-- <p>Added {{ $post->created_at->diffForHumans() }}</p>
+     --}}
+            <x-updated :date="$post->created_at" :userId="$post->user->id" :name="$post->user->name" />
+                
             
             <x-tags :tags="$post->tags" />
             
@@ -46,8 +46,9 @@
     
             @forelse($post->comments as $comment)
                 <p>
-                    {{ $comment->content }}, added {{ $comment->created_at->diffForHumans()}}
+                    {{ $comment->content }}
                 </p>
+                <x-updated :date="$comment->created_at" :userId="$post->user->id" :name="$post->user->name" />
             @empty
                 <p>No comments yet!</p>
             @endforelse
