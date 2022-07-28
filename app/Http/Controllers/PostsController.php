@@ -126,7 +126,7 @@ class PostsController extends Controller
         
         $counter = Cache::tags(['blog-post'])->get($counterKey);
 
-
+    
         return view('posts.show', [
             'post' => $blogPost,
             'counter' => $counter,

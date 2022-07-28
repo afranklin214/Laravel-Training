@@ -34,7 +34,7 @@
             {{-- <img src="{{ $post->image->url() }}" /> --}}
             {{-- <p>Added {{ $post->created_at->diffForHumans() }}</p>
      --}}
-            <x-updated :date="$post->created_at" :userId="$post->user->id" :name="$post->user->name" />
+            <x-updated :date="$post->created_at->diffForHumans()" :userId="$post->user->id" :name="$post->user->name" />
                 
             
             <x-tags :tags="$post->tags" />
@@ -48,7 +48,7 @@
                 <p>
                     {{ $comment->content }}
                 </p>
-                <x-updated :date="$comment->created_at" :userId="$post->user->id" :name="$post->user->name" />
+                <x-updated :date="$comment->created_at->diffForHumans()" :userId="$post->user->id" :name="$post->user->name" />
             @empty
                 <p>No comments yet!</p>
             @endforelse
