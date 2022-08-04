@@ -43,10 +43,9 @@ class RenameBlogPostTagTableToTaggables extends Migration
         Schema::table('blog_post_tag', function (Blueprint $table) {
             $table->unsignedBigInteger('blog_post_id')->index();
             $table->foreign('blog_post_id')->references('id')->on('blog_posts')
-                ->onDelete('cascadde');
+                ->onDelete('cascade');
         });
 
         Schema::enableForeignKeyConstraints();
-
     }
 }
