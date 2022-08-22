@@ -20,11 +20,7 @@
                 
             <x-tags :tags="$post->tags" />
 
-            @if($post->comments_count)
-                <p>{{ $post->comments_count }} comments</p>
-            @else
-                <p>No comments yet!</p>
-            @endif
+            {{ trans_choice('messages.comments', $post->comments_count) }}
 
             <div class="d-flex flex-row">
                 @auth
