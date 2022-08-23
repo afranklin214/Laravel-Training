@@ -46,7 +46,11 @@ class AppServiceProvider extends ServiceProvider
         Comment::observe(CommentObserver::class);
 
         $this->app->singleton(Counter::class, function ($app) {
-            return new Counter(5);
+            return new Counter(env('COUNTER_TIMEOUT'));
         });
+
+        // $this->app->when(Counter::class)
+        //     ->needs('$timeout')
+        //     ->give(env('COUNTER_TIMEOUT'));
     }
 }
