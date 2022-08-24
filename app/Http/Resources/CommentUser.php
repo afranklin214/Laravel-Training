@@ -16,7 +16,8 @@ class CommentUser extends JsonResource
     {
         return [
             'user_id' => $this->id,
-            'name' => $this->name
+            'name' => $this->name,
+            'email' => $this->when(true, $this->email)
         ];
     }
 }
