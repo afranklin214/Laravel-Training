@@ -7,7 +7,7 @@ use App\Models\BlogPost;
 use Illuminate\Http\Request;
 use App\Http\Resources\Comment as CommentResource;
 
-class PostCommentContrmoller extends Controller
+class PostCommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,9 @@ class PostCommentContrmoller extends Controller
      */
     public function index(BlogPost $post)
     {
-        return CommentResource::collection($post->comments()->with('user')->get());
+        return CommentResource::collection(
+            $post->comments()->with('user')->get()
+        );
     }
 
     /**
